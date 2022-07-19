@@ -5,4 +5,4 @@ const main = (): IO<void> =>
         bindIO(getStr())((name) => putStr("name is " + name)),
     );
 
-main();
+main()();

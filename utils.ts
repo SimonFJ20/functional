@@ -17,8 +17,8 @@ export type IO<T> = () => T;
 export const putStr: (v: string) => IO<void> = (v) => () => console.log(v);
 export const getStr: () => IO<string> = () => () => prompt("", "") ?? "";
 export const bindIO: <A>(v: IO<A>) => <B>(a: (v: A) => IO<B>) => IO<B> =
-    (v) => (a) =>
-        a(v());
+    (v) => (a) => () =>
+        a(v())();
 
 export type Pair<L, R> = { fst: L; snd: R };
 export const pair: <L, R>(fst: L, snd: R) => Pair<L, R> = (fst, snd) => ({
